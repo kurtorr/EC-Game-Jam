@@ -7,6 +7,9 @@ public class PlayerMove : MonoBehaviour
     //
     public float speed = 5.0f;
     public float jumpVelocity = 20f;
+    public bool canWalk = true;
+    //
+    private Vector3 playerScale;
     //
     public BoxCollider2D boxCollider2d;
     public Rigidbody2D rigidbody2d;
@@ -14,20 +17,25 @@ public class PlayerMove : MonoBehaviour
     public LayerMask guardLayerMask;
 
 
-    // Update is called once per frame
+    private void Start()
+    {
+        playerScale = transform.localScale;
+    }
+
     void Update()
     {
         PlayerJump();
         PlayerWalk();
+        PlayerCrouch();
     }
 
     private void PlayerWalk()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && canWalk)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && canWalk)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
@@ -35,7 +43,7 @@ public class PlayerMove : MonoBehaviour
 
     private void PlayerJump()
     {
-        if (IsGrounded() && Input.GetKey(KeyCode.Space))
+        if (IsGrounded() && Input.GetKey(KeyCode.Space) && canWalk)
         {
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
         }
@@ -43,8 +51,22 @@ public class PlayerMove : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, groundLayerMask);
+        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, new Vector2(boxCollider2d.bounds.size.x - boxCollider2d.bounds.size.x * 0.4f, boxCollider2d.bounds.size.y), 0f, Vector2.down, 0.1f, groundLayerMask);
         return raycastHit2d.collider != null;
+    }
+
+    private void PlayerCrouch()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            transform.localScale = new Vector3(playerScale.x, playerScale.y / 2, playerScale.z);
+            canWalk = false;
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
+            canWalk = true;
+        }
     }
 
 }
