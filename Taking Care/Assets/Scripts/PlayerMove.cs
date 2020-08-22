@@ -11,6 +11,8 @@ public class PlayerMove : MonoBehaviour
     public BoxCollider2D boxCollider2d;
     public Rigidbody2D rigidbody2d;
     public LayerMask groundLayerMask;
+    public LayerMask guardLayerMask;
+
 
     // Update is called once per frame
     void Update()
