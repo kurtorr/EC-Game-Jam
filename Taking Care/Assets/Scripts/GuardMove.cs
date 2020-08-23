@@ -8,6 +8,10 @@ public class GuardMove : MonoBehaviour
     public float guardSpeed = 2.0f;
     public float guardDirection = -1;
     //
+    public GameObject pointLight;
+    public GameObject lightHitbox;
+    //
+    public SpriteRenderer spriteRenderer;
     public BoxCollider2D boxCollider2d;
     public LayerMask groundLayerMask;
 
@@ -31,6 +35,11 @@ public class GuardMove : MonoBehaviour
     private void GuardTurn()
     {
         guardDirection *= -1;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+        pointLight.transform.Translate(Vector2.up * 0.5f);
+        pointLight.transform.Rotate(new Vector3(0, 0, 180));
+        lightHitbox.transform.Rotate(new Vector3(180, 0, 0));
+        lightHitbox.transform.Translate(Vector2.down * 5.5f);
     }
 
     private bool WallLeft()
