@@ -100,10 +100,19 @@ public class PlayerMove : MonoBehaviour
     {
         if (playerIsClimb)
         {
+            anim.SetBool("playerIsClimb", true);
             if (Input.GetKey(KeyCode.W))
             {
                 transform.Translate(Vector2.up * cSpeed * Time.deltaTime);
             }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(Vector2.down * cSpeed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            anim.SetBool("playerIsClimb", false);
         }
     }
     
@@ -114,6 +123,10 @@ public class PlayerMove : MonoBehaviour
         {
             playerIsClimb = true;
             rigidbody2d.gravityScale = 0;
+            //
+            transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
+            canWalk = true;
+            anim.SetBool("playerIsCrouch", false);
         }
     }
 
