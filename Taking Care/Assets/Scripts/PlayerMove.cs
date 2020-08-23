@@ -74,13 +74,13 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.localScale = new Vector3(playerScale.x, playerScale.y / 2, playerScale.z);
+            //transform.localScale = new Vector3(playerScale.x, playerScale.y / 2, playerScale.z);
             canWalk = false;
             anim.SetBool("playerIsCrouch", true);
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
-            transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
+            //transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
             canWalk = true;
             anim.SetBool("playerIsCrouch", false);
         }
