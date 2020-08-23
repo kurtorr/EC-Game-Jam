@@ -12,5 +12,10 @@ public class PlayerCollision : MonoBehaviour
         {
             SceneManager.LoadScene("SampleScene");
         }
+
+        if (col.gameObject.name == "Cat")
+        {
+            Debug.Log("END OF LEVEL, LEVELS MUST BE CREATED BEFORE I CAN SWAP BETWEEN THEM");
+        }
     }
 }
