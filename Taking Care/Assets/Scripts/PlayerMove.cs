@@ -15,11 +15,14 @@ public class PlayerMove : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public LayerMask groundLayerMask;
     public LayerMask guardLayerMask;
+    //
+    private Animator anim;
 
 
     private void Start()
     {
         playerScale = transform.localScale;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -34,18 +37,30 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && canWalk)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
+            anim.SetBool("playerIsWalk", true);
         }
         else if (Input.GetKey(KeyCode.D) && canWalk)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+            anim.SetBool("playerIsWalk", true);
+        }
+        else
+        {
+            anim.SetBool("playerIsWalk", false);
         }
     }
 
     private void PlayerJump()
     {
-        if (IsGrounded() && Input.GetKey(KeyCode.Space) && canWalk)
+        if (IsGrounded())
         {
-            rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            anim.SetBool("playerIsJump", false);
+            if (Input.GetKey(KeyCode.Space) && canWalk)
+            {
+                rigidbody2d.velocity = Vector2.up * jumpVelocity;
+                anim.SetBool("playerIsJump", true);
+            }
+            
         }
     }
 
@@ -61,11 +76,13 @@ public class PlayerMove : MonoBehaviour
         {
             transform.localScale = new Vector3(playerScale.x, playerScale.y / 2, playerScale.z);
             canWalk = false;
+            anim.SetBool("playerIsCrouch", true);
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
             transform.localScale = new Vector3(playerScale.x, playerScale.y, playerScale.z);
             canWalk = true;
+            anim.SetBool("playerIsCrouch", false);
         }
     }
 
