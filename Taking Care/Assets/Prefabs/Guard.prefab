@@ -213,7 +213,6 @@ MonoBehaviour:
   guardDirection: -1
   pointLight: {fileID: 5082451624156306235}
   lightHitbox: {fileID: 5082451622790417284}
-  newScale: {x: 0, y: 0, z: 0}
   spriteRenderer: {fileID: 5082451623793461763}
   boxCollider2d: {fileID: 5082451623793461764}
   groundLayerMask:
