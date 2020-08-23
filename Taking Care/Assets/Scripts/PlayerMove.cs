@@ -31,9 +31,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (!playerIsClimb)
         {
-        PlayerWalk();
         PlayerCrouch();
         }
+        PlayerWalk();
         PlayerJump();
     }
 
