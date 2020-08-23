@@ -210,6 +210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardSpeed: 2
   guardDirection: -1
+  pointLight: {fileID: 5082451624156306235}
+  lightHitbox: {fileID: 5082451622790417284}
   boxCollider2d: {fileID: 5082451623793461764}
   groundLayerMask:
     serializedVersion: 2
