@@ -6,10 +6,12 @@ public class PlayerMove : MonoBehaviour
 {
     //
     public float speed = 5.0f;
+    public float cSpeed = 4.0f;
     public float jumpVelocity = 20f;
     public bool canWalk = true;
     //
     private Vector3 playerScale;
+    public SpriteRenderer spriteRenderer;
     //
     public BoxCollider2D boxCollider2d;
     public Rigidbody2D rigidbody2d;
@@ -31,10 +33,11 @@ public class PlayerMove : MonoBehaviour
     {
         if (!playerIsClimb)
         {
-        PlayerCrouch();
+            PlayerCrouch();
+            PlayerJump();
         }
         PlayerWalk();
-        PlayerJump();
+        PlayerClimb();
     }
 
     private void PlayerWalk()
@@ -43,11 +46,13 @@ public class PlayerMove : MonoBehaviour
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
             anim.SetBool("playerIsWalk", true);
+            spriteRenderer.flipX = true;
         }
         else if (Input.GetKey(KeyCode.D) && canWalk)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             anim.SetBool("playerIsWalk", true);
+            spriteRenderer.flipX = false;
         }
         else
         {
@@ -91,6 +96,16 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    private void PlayerClimb()
+    {
+        if (playerIsClimb)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector2.up * cSpeed * Time.deltaTime);
+            }
+        }
+    }
     
     void OnTriggerEnter2D(Collider2D col)
     {

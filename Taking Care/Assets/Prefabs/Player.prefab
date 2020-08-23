@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 5
   jumpVelocity: 10
   canWalk: 1
+  spriteRenderer: {fileID: 8543584723426301810}
   boxCollider2d: {fileID: 8543584723426301813}
   rigidbody2d: {fileID: 8543584723426301812}
   groundLayerMask:
