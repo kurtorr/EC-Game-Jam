@@ -16,6 +16,8 @@ public class PlayerMove : MonoBehaviour
     public LayerMask groundLayerMask;
     public LayerMask guardLayerMask;
     //
+    public bool playerIsClimb = false;
+    //
     private Animator anim;
 
 
@@ -27,9 +29,12 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        PlayerJump();
+        if (!playerIsClimb)
+        {
         PlayerWalk();
         PlayerCrouch();
+        }
+        PlayerJump();
     }
 
     private void PlayerWalk()
@@ -86,4 +91,23 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+        if (col.gameObject.name == "Ladder")
+        {
+            playerIsClimb = true;
+            rigidbody2d.gravityScale = 0;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.name == "Ladder")
+        {
+            playerIsClimb = false;
+            rigidbody2d.gravityScale = 4;
+        }
+    }
 }
