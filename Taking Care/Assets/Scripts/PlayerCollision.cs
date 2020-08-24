@@ -8,7 +8,7 @@ public class PlayerCollision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
-        if (col.gameObject.name == "LightHitbox")
+        if (col.gameObject.name == "LightHitbox" || col.gameObject.name == "ded")
         {
             SceneManager.LoadScene("Tutorial");
         }
