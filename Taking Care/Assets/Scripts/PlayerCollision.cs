@@ -10,7 +10,7 @@ public class PlayerCollision : MonoBehaviour
         Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
         if (col.gameObject.name == "LightHitbox")
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Tutorial");
         }
 
         if (col.gameObject.name == "Cat")

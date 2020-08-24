@@ -21,6 +21,8 @@ public class PlayerMove : MonoBehaviour
     public bool playerIsClimb = false;
     //
     private Animator anim;
+    //
+    public GameObject SceneCamera;
 
 
     private void Start()
@@ -34,8 +36,8 @@ public class PlayerMove : MonoBehaviour
         if (!playerIsClimb)
         {
             PlayerCrouch();
-            PlayerJump();
         }
+        PlayerJump();
         PlayerWalk();
         PlayerClimb();
     }
@@ -58,14 +60,15 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetBool("playerIsWalk", false);
         }
+        SceneCamera.transform.Translate(this.transform.position.x - SceneCamera.transform.position.x, this.transform.position.y - SceneCamera.transform.position.y, 0);
     }
 
     private void PlayerJump()
     {
-        if (IsGrounded())
+        if (IsGrounded() || IsGuarded())
         {
             anim.SetBool("playerIsJump", false);
-            if (Input.GetKey(KeyCode.Space) && canWalk)
+            if (Input.GetKeyDown(KeyCode.Space) && canWalk)
             {
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
                 anim.SetBool("playerIsJump", true);
@@ -77,6 +80,11 @@ public class PlayerMove : MonoBehaviour
     private bool IsGrounded()
     {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, new Vector2(boxCollider2d.bounds.size.x - boxCollider2d.bounds.size.x * 0.4f, boxCollider2d.bounds.size.y), 0f, Vector2.down, 0.1f, groundLayerMask);
+        return raycastHit2d.collider != null;
+    }
+    private bool IsGuarded()
+    {
+        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, new Vector2(boxCollider2d.bounds.size.x - boxCollider2d.bounds.size.x * 0.4f, boxCollider2d.bounds.size.y), 0f, Vector2.down, 0.1f, guardLayerMask);
         return raycastHit2d.collider != null;
     }
 

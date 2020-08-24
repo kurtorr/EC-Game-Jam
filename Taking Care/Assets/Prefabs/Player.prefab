@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8543584723426301812}
   - component: {fileID: 8543584723426301809}
   - component: {fileID: 8543584723426301070}
-  - component: {fileID: 2500969562194786572}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -112,8 +111,10 @@ MonoBehaviour:
     m_Bits: 256
   guardLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   playerIsClimb: 0
+  SceneCamera: {fileID: 1385321859354329464, guid: 3b942778085cb39408a85fccaf4867be,
+    type: 3}
 --- !u!61 &8543584723426301813
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -192,15 +193,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2500969562194786572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8543584723426301815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d6386919964ef45a788413f56908b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
