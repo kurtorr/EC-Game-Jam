@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Zoey
+  m_Name: Apple
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 2f735e52dfc1a224e9c0fab33ed576c6, type: 3}
+      value: {fileID: 21300000, guid: 74c97121ea813944f8139ae59b98f225, type: 3}
     - time: 0.4
-      value: {fileID: 21300000, guid: 029d7b8be849b8a4bb1b0cf08f3023de, type: 3}
+      value: {fileID: 21300000, guid: c386f00e3c005d24a901eab7e090e3f8, type: 3}
     - time: 0.8
-      value: {fileID: 21300000, guid: 029d7b8be849b8a4bb1b0cf08f3023de, type: 3}
+      value: {fileID: 21300000, guid: 74c97121ea813944f8139ae59b98f225, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 2f735e52dfc1a224e9c0fab33ed576c6, type: 3}
-    - {fileID: 21300000, guid: 029d7b8be849b8a4bb1b0cf08f3023de, type: 3}
-    - {fileID: 21300000, guid: 029d7b8be849b8a4bb1b0cf08f3023de, type: 3}
+    - {fileID: 21300000, guid: 74c97121ea813944f8139ae59b98f225, type: 3}
+    - {fileID: 21300000, guid: c386f00e3c005d24a901eab7e090e3f8, type: 3}
+    - {fileID: 21300000, guid: 74c97121ea813944f8139ae59b98f225, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
