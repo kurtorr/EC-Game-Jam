@@ -13,9 +13,9 @@ public class PlayerCollision : MonoBehaviour
             SceneManager.LoadScene("Tutorial");
         }
 
-        if (col.gameObject.name == "Cat")
+        if (col.gameObject.name == "Zoey")
         {
-            Debug.Log("END OF LEVEL, LEVELS MUST BE CREATED BEFORE I CAN SWAP BETWEEN THEM");
+            SceneManager.LoadScene("YourWinner");
         }
     }
 }
