@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6695202078600646906}
   - component: {fileID: 6695202078600646901}
   m_Layer: 0
-  m_Name: Cat
+  m_Name: Zoey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
